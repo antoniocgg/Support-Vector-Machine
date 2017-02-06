@@ -1,2 +1,40 @@
 # Support-Vector-Machine
 Implementation of Support Vector Machine using Stochastic Gradient Descent
+
+Name: Ricky Su
+Email: rsu4@u.rochester.edu
+Course: CSC246
+Homework: Implement SGD for SVM for the adult income dataset. Experiment with performance as a function of learning rate.
+
+************ Files *********
+README.txt => This file
+SVM.py     => Implementation of Support Vector Machine with Stochastic Gradient Descent
+plot.pdf   => Plot of accuracy vs learning rate with a fixed capacity
+a7a.train  => training data
+
+
+************ Algorithm *****
+The given data (i.e. the training and testing data) is first parsed into a list of arrays, with each array as a data point in the set. Arrays are of the type numpy array.
+
+The training data is used to train the weights, (i.e. train_weights()), and through each iteration, gradients for the weights and bias are calculated based on our correct or incorrect estimate of the class. These gradients are then implemented into our weights and bias to fit the data better.
+
+************ Instructions ***
+python SVM.py {test file}
+
+************ Results *******
+My best result was from a 0.45 learning rate, 0.0127 capacity C, and 4 epochs yielding an accuracy of 85.1125% on the dev dataset. Running on the test set, I get an accuracy of ~84.86%
+
+[rsu4@cycle1 DIR]$ python SVM.py a7a.test
+Training...
+Weights are trained 4 times, with a learning rate of 0.45 and a capacity of 0.0127
+Testing...
+Tested on a7a.test, accuracy is 84.8599456329%
+
+
+************ Your interpretation **** (Attention: important!)
+I immediately got results that were better than SGD Perceptron, which is what I expected. The highest accuracy I received from Perceptron was 82.366%. We were asked to experiment with the learning rate, so I wanted to find the best capacity first. This led me to the best result that I found for C, which was 0.0127. As we increase capacity C, accuracy decreases. C should be under 0.1 for best results. Accuracy increased when the number of epochs increased, up to 4 epochs, which was the best result. This made sense, as weights are affected even if we make a correct guess. After 4 epochs, accuracies began fluctuating around 84.90%, and then once the weights were trained on 10 or more epochs, accuracy began decreasing, due to overfitting.
+
+I included a plot of accuracy vs learning rate based on different numbers of epochs, with a fixed C=0.0127. The learning rates tested were It shows that after a certain learning rate, increasing it will just fluctuate the accuracy centered on a number around 84%, and eventually decreases. Initially though, accuracies skyrocket upwards, up to a learning rate of 0.45. Then fluctuation begins.
+
+************ References ************
+Lecture Notes
